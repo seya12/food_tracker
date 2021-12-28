@@ -1,16 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import Product from "./components/Product";
-
-const App = () => {
-  return (
-    <div>
-      <Product name="Bubugaga"></Product>
-      <Product name="Test"></Product>
-    </div>
-  );
-};
+import App from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
