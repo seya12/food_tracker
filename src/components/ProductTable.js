@@ -3,7 +3,7 @@ import Product from "./Product";
 import data from "../data";
 const ProductTable = () => {
   return (
-    <section className="products">
+    <section id="products" className="products">
       {data.map((article) => (
         <Product key={article.id} {...article}></Product>
       ))}
