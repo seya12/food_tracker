@@ -57,6 +57,7 @@ article {
   margin-bottom: 2rem;
   display: grid;
   grid-template-rows: auto 1fr;
+  text-align: center;
 }
 
 img {

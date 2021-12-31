@@ -7,7 +7,7 @@ const FilterButton = ({ size, onFilterClick }) => {
       type="button"
       onClick={() => onFilterClick(size)}
     >
-      {size}g
+      {size ? size + "g" : "Alle"}
     </button>
   );
 };

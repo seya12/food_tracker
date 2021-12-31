@@ -4,6 +4,8 @@ import FilterButton from "./FilterButton";
 const Filter = ({ categories, onFilterClick }) => {
   return (
     <div className="filter-container">
+      <FilterButton onFilterClick={onFilterClick}></FilterButton>
+
       {categories.map((category) => (
         <FilterButton
           key={category}

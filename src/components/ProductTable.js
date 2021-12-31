@@ -13,8 +13,14 @@ const ProductTable = () => {
     ));
 
   const onFilterClick = (size) => {
-    const newProduct = data.filter((product) => product.size === size);
-    setProducts(newProduct);
+    let newProducts;
+
+    if (size === undefined) {
+      newProducts = [...data];
+    } else {
+      newProducts = data.filter((product) => product.size === size);
+    }
+    setProducts(newProducts);
   };
 
   return (
