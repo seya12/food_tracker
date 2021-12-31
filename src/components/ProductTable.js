@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import Filter from "./Filter";
 import Product from "./Product";
 import data from "../data";
+import AddProduct from "./AddProduct";
 
 const ProductTable = () => {
   const [products, setProducts] = useState(data);
@@ -23,9 +24,15 @@ const ProductTable = () => {
     setProducts(newProducts);
   };
 
+  const onAddClick = (product) => {
+    //TODO: make checks for missing data + think of a solution with data / product (especially considering reset or filter)
+    setProducts([...products, product]);
+  };
+
   return (
     <>
       <h1>Übersicht Produkte</h1>
+      <AddProduct onAddClick={onAddClick}></AddProduct>
       <Filter categories={categories} onFilterClick={onFilterClick} />
       <section id="products" className="products">
         {mapProducts()}
