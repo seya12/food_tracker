@@ -67,6 +67,21 @@ img {
   border-radius: 10px 5%;
 }
 
+.rating button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: grey;
+}
+
+.rating button.active {
+  color: orange;
+}
+
+.star {
+  font-size: 16pt;
+}
+
 .content-container {
   width: clamp(250px, 70vw, 800px);
   margin-left: auto;
