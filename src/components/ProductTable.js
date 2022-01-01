@@ -10,7 +10,7 @@ const ProductTable = () => {
 
   const mapProducts = () =>
     products.map((article) => (
-      <Product key={article.id} {...article}></Product>
+      <Product key={article.id} onDeleteClick={onDeleteClick} {...article}></Product>
     ));
 
   const onFilterClick = (size) => {
@@ -28,6 +28,10 @@ const ProductTable = () => {
     //TODO: make checks for missing data + think of a solution with data / product (especially considering reset or filter)
     setProducts([...products, product]);
   };
+
+  const onDeleteClick = (productID) => {
+    setProducts(products.filter((product) => product.id !== productID));
+  }
 
   return (
     <>
