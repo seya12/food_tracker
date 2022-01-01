@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-const Rating = () => {
+const Rating = ({defaultRating}) => {
   const maxStars = 5;
 
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(defaultRating);
   const [hover, setHover] = useState(0);
 
   return (

@@ -5,6 +5,7 @@ const data = [
     size: 400,
     image:
       "https://www.sandras-tieroase.de/media/image/product/1250/md/mjamjam-saftiges-huhn-an-moehrchen-400g.jpg",
+    rating: 2,
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ const data = [
     size: 200,
     image:
       "https://www.sandras-tieroase.de/media/image/product/1247/md/mjamjam-zarte-ente-gefluegel-200g.jpg",
+    rating: 0,
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ const data = [
     size: 200,
     image:
       "https://www.sandras-tieroase.de/media/image/product/4103/md/mjamjam-purer-fleischgenuss-huehnchen-pur-200g.jpg",
+    rating: 5,
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ const data = [
     size: 200,
     image:
       "https://www.sandras-tieroase.de/media/image/product/4104/md/mjamjam-purer-fleischgenuss-pute-pur-200g.jpg",
+    rating: 0,
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ const data = [
     size: 200,
     image:
       "https://www.sandras-tieroase.de/media/image/product/1243/md/mjamjam-mahlzeit-mit-leckeren-herzen-200g.jpg",
+    rating: 1,
   },
 ];
 export default data;
