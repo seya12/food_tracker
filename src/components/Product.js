@@ -9,17 +9,6 @@ const Product = (props) => {
 
   return (
     <article className="card">
-      
-      <img src={props.image} alt={name}></img>
-      <div className="product-item">
-        <h4>{`${name} (${props.size}g)`}</h4>
-        
-      </div>
-      <Rating
-        id={id}
-        defaultRating={props.rating}
-        updateRating={updateRating}
-      />
       <button
           className="delete-button"
           type="button"
@@ -27,6 +16,16 @@ const Product = (props) => {
         >
           <span>&times;</span>
         </button>
+      <img src={props.image} alt={name}></img>
+      <div className="product-item">
+        <h4>{`${name} (${props.size}g)`}</h4>
+      </div>
+      <Rating
+        id={id}
+        defaultRating={props.rating}
+        updateRating={updateRating}
+      />
+      
     </article>
   );
 };
