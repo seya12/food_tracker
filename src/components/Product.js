@@ -8,23 +8,25 @@ const Product = (props) => {
   const onDeleteClick = props.onDeleteClick;
 
   return (
-    <article className="productItem">
-      <div className="item">
+    <article className="card">
+      
+      <img src={props.image} alt={name}></img>
+      <div className="product-item">
         <h4>{`${name} (${props.size}g)`}</h4>
-        <button
+        
+      </div>
+      <Rating
+        id={id}
+        defaultRating={props.rating}
+        updateRating={updateRating}
+      />
+      <button
           className="delete-button"
           type="button"
           onClick={() => onDeleteClick(id)}
         >
           <span>&times;</span>
         </button>
-      </div>
-      <img src={props.image} alt={name}></img>
-      <Rating
-        id={id}
-        defaultRating={props.rating}
-        updateRating={updateRating}
-      />
     </article>
   );
 };

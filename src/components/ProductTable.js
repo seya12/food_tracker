@@ -47,13 +47,15 @@ const ProductTable = () => {
 
   return (
     <>
-      <h1>Übersicht Produkte</h1>
-      <AddProduct sizes={sizes} onAddClick={onAddClick} />
-      <Filter
-        currentFilter={filter}
-        sizes={sizes}
-        onFilterClick={onFilterClick}
-      />
+      <h1 className="title">Produktübersicht</h1>
+      <div className="products-header">
+        <AddProduct sizes={sizes} onAddClick={onAddClick} />
+        <Filter
+          currentFilter={filter}
+          sizes={sizes}
+          onFilterClick={onFilterClick}
+        />
+      </div>
       <section className="products">{mapProducts()}</section>
     </>
   );
