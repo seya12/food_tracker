@@ -20,45 +20,53 @@ const AddProduct = ({ sizes, onAddClick }) => {
   };
 
   return (
-    <div>
-      <button type="button" onClick={() => setShowForm(!showForm)}>
-        Hinzufügen
-      </button>
+    <div className="add-container">
+      <div className="add-button-container">
+        <button type="button" onClick={() => setShowForm(!showForm)}>
+          Hinzufügen
+        </button>
+      </div>
       {showForm && (
-        <form>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Beschreibung"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
+        <div className="content-container">
+          <form className="add-form">
+            <label htmlFor="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Beschreibung"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            ></input>
 
-          <label htmlFor="size">Größe</label>
-          <select
-            id="size"
-            name="size"
-            value={size}
-            onChange={(e) => setSize(e.target.value)}
-          >
-            {sizes.map((size) => (
-              <option key={size} value={size}>
-                {size}g
-              </option>
-            ))}
-          </select>
+            <label htmlFor="size">Größe:</label>
+            <select
+              id="size"
+              name="size"
+              value={size}
+              onChange={(e) => setSize(e.target.value)}
+            >
+              {sizes.map((size) => (
+                <option key={size} value={size}>
+                  {size}g
+                </option>
+              ))}
+            </select>
 
-          <label htmlFor="link">Bildreferenz</label>
-          <input
-            type="text"
-            id="link"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          ></input>
+            <label htmlFor="link">Bildreferenz:</label>
+            <input
+              type="text"
+              id="link"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+            ></input>
 
-          <input type="submit" onClick={(event) => submitData(event)}></input>
-        </form>
+            <input
+              type="submit"
+              onClick={(event) => submitData(event)}
+              value="Absenden"
+            ></input>
+          </form>
+        </div>
       )}
     </div>
   );

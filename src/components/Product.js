@@ -9,10 +9,16 @@ const Product = (props) => {
 
   return (
     <article className="productItem">
-      <h4>{`${name} (${props.size}g)`}</h4>
-      <button type="button" onClick={() => onDeleteClick(id)}>
-        <span>&times;</span>
-      </button>
+      <div className="item">
+        <h4>{`${name} (${props.size}g)`}</h4>
+        <button
+          className="delete-button"
+          type="button"
+          onClick={() => onDeleteClick(id)}
+        >
+          <span>&times;</span>
+        </button>
+      </div>
       <img src={props.image} alt={name}></img>
       <Rating
         id={id}

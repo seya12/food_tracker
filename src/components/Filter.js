@@ -1,13 +1,17 @@
 import React from "react";
 import FilterButton from "./FilterButton";
 
-const Filter = ({ sizes, onFilterClick }) => {
+const Filter = ({ sizes, currentFilter, onFilterClick }) => {
   return (
     <div className="filter-container">
-      <FilterButton onFilterClick={onFilterClick}></FilterButton>
+      <FilterButton
+        currentFilter={currentFilter}
+        onFilterClick={onFilterClick}
+      ></FilterButton>
 
       {sizes.map((size) => (
         <FilterButton
+          currentFilter={currentFilter}
           key={size}
           size={size}
           onFilterClick={onFilterClick}
