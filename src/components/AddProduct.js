@@ -1,9 +1,9 @@
 import { useState, React } from "react";
 
-const AddProduct = ({ onAddClick }) => {
+const AddProduct = ({ sizes, onAddClick }) => {
   const [showForm, setShowForm] = useState(false);
   const [name, setName] = useState("");
-  const [size, setSize] = useState("");
+  const [size, setSize] = useState(200);
   const [image, setImage] = useState("");
   const [id, setId] = useState(10);
 
@@ -15,10 +15,10 @@ const AddProduct = ({ onAddClick }) => {
 
     setName("");
     setImage("");
-    setSize("");
+    setSize(200);
+    setShowForm(!showForm);
   };
 
-  //TODO: Format stuff + CSS + dynamic size
   return (
     <div>
       <button type="button" onClick={() => setShowForm(!showForm)}>
@@ -30,28 +30,29 @@ const AddProduct = ({ onAddClick }) => {
           <input
             type="text"
             id="name"
-            placeholder="Enter Text"
+            placeholder="Beschreibung"
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></input>
 
-          <label htmlFor="size">Kategorie</label>
+          <label htmlFor="size">Größe</label>
           <select
             id="size"
             name="size"
             value={size}
             onChange={(e) => setSize(e.target.value)}
           >
-            <option value="200">200g</option>
-            <option value="400">400g</option>
-            <option value="800">800g</option>
+            {sizes.map((size) => (
+              <option key={size} value={size}>
+                {size}g
+              </option>
+            ))}
           </select>
 
-          <label htmlFor="link">Bild Link</label>
+          <label htmlFor="link">Bildreferenz</label>
           <input
             type="text"
             id="link"
-            placeholder="Enter Link"
             value={image}
             onChange={(e) => setImage(e.target.value)}
           ></input>

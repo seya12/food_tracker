@@ -6,14 +6,16 @@ import AddProduct from "./AddProduct";
 
 const ProductTable = () => {
   const [products, setProducts] = useState(data);
-  const categories = [200, 400, 800];
+  const [filter, setFilter] = useState();
+  const sizes = [200, 400, 800];
 
   const mapProducts = () =>
-    products.map((article) => (
+    products.map((product) => (
       <Product
-        key={article.id}
+        key={product.id}
         onDeleteClick={onDeleteClick}
-        {...article}
+        updateRating={updateRating}
+        {...product}
       ></Product>
     ));
 
@@ -26,26 +28,29 @@ const ProductTable = () => {
       newProducts = data.filter((product) => product.size === size);
     }
     setProducts(newProducts);
+    setFilter(size);
   };
 
   const onAddClick = (product) => {
-    setProducts([...products, product]);
     data.push(product);
+    onFilterClick(filter);
   };
 
-  const onDeleteClick = (productID) => {
-    setProducts(products.filter((product) => product.id !== productID));
-    data.splice(data.indexOf(productID), 1);
+  const onDeleteClick = (id) => {
+    setProducts(products.filter((product) => product.id !== id));
+    data.splice(data.indexOf(id), 1);
+  };
+
+  const updateRating = (id, rating) => {
+    data.find((product) => product.id === id).rating = rating;
   };
 
   return (
     <>
       <h1>Übersicht Produkte</h1>
-      <AddProduct onAddClick={onAddClick}></AddProduct>
-      <Filter categories={categories} onFilterClick={onFilterClick} />
-      <section id="products" className="products">
-        {mapProducts()}
-      </section>
+      <AddProduct sizes={sizes} onAddClick={onAddClick} />
+      <Filter sizes={sizes} onFilterClick={onFilterClick} />
+      <section className="products">{mapProducts()}</section>
     </>
   );
 };

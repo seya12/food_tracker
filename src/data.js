@@ -29,7 +29,7 @@ const data = [
     size: 200,
     image:
       "https://www.sandras-tieroase.de/media/image/product/4104/md/mjamjam-purer-fleischgenuss-pute-pur-200g.jpg",
-    rating: 0,
+    rating: 1,
   },
   {
     id: 5,

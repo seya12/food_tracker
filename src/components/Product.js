@@ -1,15 +1,24 @@
 import React from "react";
 import Rating from "./Rating";
 
-const Product = ({ onDeleteClick, id, name, size, image, rating }) => {
+const Product = (props) => {
+  const id = props.id;
+  const name = props.name;
+  const updateRating = props.updateRating;
+  const onDeleteClick = props.onDeleteClick;
+
   return (
     <article className="productItem">
-      <h4>{name}</h4>
+      <h4>{`${name} (${props.size}g)`}</h4>
       <button type="button" onClick={() => onDeleteClick(id)}>
         <span>&times;</span>
       </button>
-      <img src={image} alt={name}></img>
-      <Rating defaultRating={rating} />
+      <img src={props.image} alt={name}></img>
+      <Rating
+        id={id}
+        defaultRating={props.rating}
+        updateRating={updateRating}
+      />
     </article>
   );
 };
