@@ -3,6 +3,8 @@
 Within this web application, we took a closer look at the React framework and focused on components and props.
 The web application provides an overview of products that can be managed and rated by the user.
 
+![](Food_Tracker.png)
+
 ## Getting Started
 
 This is an example of how you may give instructions on setting up your project locally.
