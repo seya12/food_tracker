@@ -74,6 +74,11 @@ img {
   margin-bottom: 20px;
 }
 
+.add-button-container button:hover {
+  background-color: darkgreen;
+  transition: 0.3s;
+}
+
 .add-form {
   margin-top: 80px;
   display: grid;
