@@ -3,6 +3,7 @@ import Filter from "./Filter";
 import Product from "./Product";
 import data from "../data";
 import AddProduct from "./AddProduct";
+import Title from "./Title";
 
 const ProductTable = () => {
   const [products, setProducts] = useState(data);
@@ -48,7 +49,7 @@ const ProductTable = () => {
   return (
     <>
       <div className="header">
-        <h1>Produktübersicht</h1>
+        <Title />
         <AddProduct sizes={sizes} onAddClick={onAddClick} />
         <Filter
           currentFilter={filter}

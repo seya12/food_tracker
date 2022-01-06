@@ -17,7 +17,6 @@ const data = [
   },
   {
     id: 3,
-    name: "MjAMjAM purer Fleischgenuss Hühnchen",
     size: 200,
     image:
       "https://www.sandras-tieroase.de/media/image/product/4103/md/mjamjam-purer-fleischgenuss-huehnchen-pur-200g.jpg",
