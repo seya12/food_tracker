@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProjectSummary | React: Components and Props</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header class="page-header">
+      <div class="content-container">
+        <h1 class="page-title">React - Components and Props</h1>
+        <p class="page-subtitle">
+          Auf dieser Seite findet ihr Erklärungen zu React Components und
+          Props.<br />
+          Ganz unten findet ihr eine Übersicht mit weiterführenden Links und
+          Tutorials.
+        </p>
+      </div>
+    </header>
+    <section>
+      <article>
+        <div class="content-container">
+          <details>
+            <summary>
+              <h2 class="article-header">Webkomponenten Allgemein</h2>
+            </summary>
+            <div class="details-container">
+              <p>
+                Komponenten ermöglichen die Aufteilung der UI in eigenständige,
+                wiederverwendaber Code-Snippets.
+              </p>
+            </div>
+          </details>
+        </div>
+      </article>
+      <article>
+        <div class="content-container">
+          <details>
+            <summary>
+              <h2 class="article-header">Komponenten in React</h2>
+            </summary>
+            <div class="details-container">
+              <p>
+                In React können Webkomponenten durch zwei Arten angelegt werden:
+                Javascript-Klassen und Javascript-Funktionen. Bei der Abbildung
+                als Klasse muss von der Basisklasse React.Component abgeleitet
+                und die render()-Methode implementiert werden:
+              </p>
+              <textarea readonly rows="10">
+class Title extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
+    return <h1>Produktübersicht<h1>;
+  }
+}
+            </textarea
+              >
+              <p>
+                Bei der Implementierung als Funktion wird direkt JSX mittels
+                return-Statement zurückgegeben. JSX ist eine Mischung aus HTLM
+                und Javascript Code, welches wie HTML aussieht. Mehr Infos dazu
+                gibt es
+                <a href="https://reactjs.org/docs/introducing-jsx.html">hier</a>
+              </p>
+
+              <textarea readonly rows="4">
+const Title = () => {
+  return <h1>Produktübersicht</h1>;
+};
+            </textarea
+              >
+            </div>
+          </details>
+        </div>
+      </article>
+      <article>
+        <div class="content-container">
+          <details>
+            <summary>
+              <h2 class="article-header">Geschachtelte Komponenten</h2>
+            </summary>
+            <div class="details-container">
+              <p>
+                Es darf nur <strong>eine</strong> Komponente zurückgegeben
+                werden - in dieser können aber beliebig viele andere Komponenten
+                vorkommen. Sollten auf oberster Ebene einer Komponente mehrere
+                HTML-Tags angeführt werden, müssen diese in einem Element
+                verschlachtelt werden.
+              </p>
+              <p>Nicht erlaubt:</p>
+              <textarea readonly rows="5">
+const HelloWorld = () => {
+  return <h1>Hello</h1>
+         <h1>World</h1>;
+};
+        </textarea
+              >
+              <p>Erlaubt:</p>
+              <textarea readonly rows="7">
+const HelloWorld = () => {
+  return <div>
+           <h1>Hello</h1>
+           <h1>World</h1>;
+        </div>
+};
+        </textarea
+              >
+              <p>
+                Man kann auch benutzerdefinierte Komponenten schachteln - Hier
+                wird die Title-Komponente aus dem Beispiel oben verwendet:
+              </p>
+              <textarea readonly rows="8">
+const HelloWorld = () => {
+  return <div>
+            <h1>Hello</h1>
+            <Title />
+            <h1>World</h1>;
+        </div>
+};
+        </textarea
+              >
+            </div>
+          </details>
+        </div>
+      </article>
+      <article>
+        <div class="content-container">
+          <details>
+            <summary>
+              <h2 class="article-header">Props</h2>
+            </summary>
+            <div class="details-container">
+              <p>
+                Eigenschaften einer Komponente werden direkt als
+                Funktionsparameter übergeben.
+              </p>
+
+              <textarea readonly rows="8">
+const Test = () => {
+  return <HelloWorld name="World" />
+};
+
+const HelloWorld = (props) => {
+  return <h1>Hello, {props.name}</h1>
+};
+          </textarea
+              >
+            </div>
+          </details>
+        </div>
+      </article>
+      <article>
+        <div class="content-container">
+          <details>
+            <summary>
+              <h2 class="article-header">Links</h2>
+            </summary>
+            <div class="details-container">
+              <ul>
+                <li>
+                  <a
+                    href="https://reactjs.org/docs/getting-started.html"
+                    target="_blank"
+                    >React - Getting Start</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.youtube.com/watch?v=w7ejDZ8SWv8&ab_channel=TraversyMedia"
+                    target="_blank"
+                    >Traversy Media - React JS Crash Course</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.youtube.com/watch?v=4UZrsTqkcW4"
+                    target="_blank"
+                    >Full React Course 2020 (>10h)</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/seya12/food_tracker"
+                    target="_blank"
+                    >Unser Projekt</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </article>
+    </section>
+    <footer>
+      <div class="content-container">
+        <hr />
+        <p>
+          WDP Projekt - Website Summary | &#169; by Lukas Seyr & Michael Gruber
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
