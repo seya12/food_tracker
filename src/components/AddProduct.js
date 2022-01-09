@@ -23,7 +23,7 @@ const AddProduct = ({ sizes, onAddClick }) => {
     <div className="add-container">
       <div className="add-button-container">
         <button type="button" onClick={() => setShowForm(!showForm)}>
-          Hinzufügen
+          {!showForm ? "Hinzufügen" : "Schließen"}
         </button>
       </div>
       {showForm && (

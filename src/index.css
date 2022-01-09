@@ -1,7 +1,11 @@
 :root {
   --background-color: #f1e8e8;
   --text-color: #242424;
-  --border-radius: 5px;
+  --border-radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -13,8 +17,6 @@ body {
 
   background-color: var(--background-color);
   color: var(--text-color);
-
-  box-sizing: border-box;
 }
 
 h1,
@@ -80,26 +82,38 @@ img {
 }
 
 .add-form {
-  margin-top: 80px;
+  margin: 20px auto;
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 8px;
   align-items: center;
   max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
+}
+
+.add-form input[type="text"], .add-form select {
+  height: 32px;
+  padding: 6px 16px;
+  width: 100%;
+  border: none;
+  border-radius: var(--border-radius);
 }
 
 .add-form [type="submit"] {
   justify-self: end;
   grid-column-end: -1;
   border: solid black;
+  border-radius: var(--border-radius);
   padding: 8px 16px;
   background-color: black;
   color: white;
   font-weight: bold;
   transition: all 0.25s ease-out;
+}
+
+.add-form [type="submit"]:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
 }
 
 .filter-container {
@@ -196,10 +210,6 @@ img {
   width: clamp(250px, 70vw, 800px);
   margin-left: auto;
   margin-right: auto;
-}
-
-.content-container > *:first-child {
-  margin-top: 0;
 }
 
 .copyright {
