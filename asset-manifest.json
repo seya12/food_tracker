@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/food_tracker/static/css/main.9fb8afa2.css",
+    "main.js": "/food_tracker/static/js/main.9d160736.js",
+    "index.html": "/food_tracker/index.html",
+    "main.9fb8afa2.css.map": "/food_tracker/static/css/main.9fb8afa2.css.map",
+    "main.9d160736.js.map": "/food_tracker/static/js/main.9d160736.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9fb8afa2.css",
+    "static/js/main.9d160736.js"
+  ]
+}
