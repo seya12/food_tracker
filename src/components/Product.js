@@ -10,6 +10,7 @@ const Product = (props) => {
   return (
     <article className="card">
       <DeleteButton {...props}></DeleteButton>
+      {/* spread operator! see the difference below */}
 
       <ProductContent image={props.image} name={props.name} size={props.size} />
       <Rating

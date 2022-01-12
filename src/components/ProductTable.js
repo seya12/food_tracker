@@ -10,10 +10,11 @@ const ProductTable = () => {
   const [filter, setFilter] = useState();
   const sizes = [200, 400, 800];
 
+  //return array with custom product components
   const mapProducts = () =>
     products.map((product) => (
       <Product
-        key={product.id}
+        key={product.id} //so react can distinguish products
         onDeleteClick={onDeleteClick}
         updateRating={updateRating}
         {...product}
