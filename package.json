@@ -4,13 +4,9 @@
   "private": true,
   "homepage": "http://seya12.github.io/food_tracker",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,6 +35,10 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "@svgr/webpack": "^6.4.0",
+    "gh-pages": "^4.0.0"
+  },
+  "overrides": {
+    "@svgr/webpack": "$@svgr/webpack"
   }
 }
