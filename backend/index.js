@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
+import productRouter from "./routes/products.js";
+
 const app = express();
 const port = 3001;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use("/api/products", productRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

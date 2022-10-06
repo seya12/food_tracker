@@ -1,4 +1,6 @@
 {
+  "name": "food_tracker_backend",
+  "type": "module",
   "dependencies": {
     "express": "^4.18.1"
   }
