@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import Filter from "./Filter";
 import Product from "./Product";
 import data from "../data";
@@ -6,9 +6,25 @@ import AddProduct from "./AddProduct";
 import Title from "./Title";
 
 const ProductTable = () => {
-  const [products, setProducts] = useState(data);
+  const [products, setProducts] = useState([
+    {
+      id: 0,
+      name: "",
+      size: 0,
+      image: "",
+      rating: 0,
+    },
+  ]);
   const [filter, setFilter] = useState();
   const sizes = [200, 400, 800];
+
+  useEffect(() => {
+    async function fetchData() {
+      const p = await fetch("/products");
+      setProducts(await p.json());
+    }
+    fetchData();
+  });
 
   //return array with custom product components
   const mapProducts = () =>
