@@ -60,11 +60,7 @@ const AddProduct = ({ sizes, onAddClick }) => {
               onChange={(e) => setImage(e.target.value)}
             ></input>
 
-            <input
-              type="submit"
-              onClick={(event) => submitData(event)}
-              value="Absenden"
-            ></input>
+            <input type="submit" onClick={submitData} value="Absenden"></input>
           </form>
         </div>
       )}

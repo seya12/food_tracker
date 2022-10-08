@@ -50,16 +50,25 @@ const ProductTable = () => {
   };
 
   const onAddClick = (product) => {
+    /*
+    TODO: POST request to backend
+    */
     data.push(product);
     onFilterClick(filter);
   };
 
   const onDeleteClick = (id) => {
+    /*
+    TODO: DELETE request to backend
+    */
     setProducts(products.filter((product) => product.id !== id));
     data.splice(data.indexOf(id), 1);
   };
 
   const updateRating = (id, rating) => {
+    /*
+    TODO: PUT request to backend
+    */
     data.find((product) => product.id === id).rating = rating;
   };
 
