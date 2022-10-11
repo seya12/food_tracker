@@ -1,22 +1,23 @@
 import { React, useEffect, useState } from "react";
 import Filter from "./Filter";
 import Product from "./Product";
-import data from "../data";
 import AddProduct from "./AddProduct";
 import Title from "./Title";
 
 const ProductTable = () => {
   const [products, setProducts] = useState([
     {
-      id: 0,
+      sid: 0,
       name: "",
       size: 0,
-      image: "",
+      imageLink: "",
       rating: 0,
     },
   ]);
   const [filter, setFilter] = useState();
   const sizes = [200, 400, 800];
+
+  const filteredProducts = products.filter((p) => p.size === filter);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,13 +25,21 @@ const ProductTable = () => {
       setProducts(await p.json());
     }
     fetchData();
-  });
+  }, []);
 
   //return array with custom product components
-  const mapProducts = () =>
+  const mapProducts = () => {
+    if (filter) {
+      console.log("filter");
+      return getMappedProducts(filteredProducts);
+    }
+    return getMappedProducts(products);
+  };
+
+  const getMappedProducts = (products) =>
     products.map((product) => (
       <Product
-        key={product.id} //so react can distinguish products
+        key={product.sid} //so react can distinguish products
         onDeleteClick={onDeleteClick}
         updateRating={updateRating}
         {...product}
@@ -38,14 +47,6 @@ const ProductTable = () => {
     ));
 
   const onFilterClick = (size) => {
-    let newProducts;
-
-    if (size === undefined) {
-      newProducts = [...data];
-    } else {
-      newProducts = data.filter((product) => product.size === size);
-    }
-    setProducts(newProducts);
     setFilter(size);
   };
 
@@ -53,23 +54,24 @@ const ProductTable = () => {
     /*
     TODO: POST request to backend
     */
-    data.push(product);
-    onFilterClick(filter);
+    setProducts([...products, product]);
   };
 
   const onDeleteClick = (id) => {
     /*
     TODO: DELETE request to backend
     */
-    setProducts(products.filter((product) => product.id !== id));
-    data.splice(data.indexOf(id), 1);
+    setProducts(products.filter((product) => product.sid !== id));
   };
 
   const updateRating = (id, rating) => {
     /*
     TODO: PUT request to backend
     */
-    data.find((product) => product.id === id).rating = rating;
+    const newArr = products.map((p) =>
+      p.sid === id ? { ...p, rating: rating } : p
+    );
+    setProducts(newArr);
   };
 
   return (

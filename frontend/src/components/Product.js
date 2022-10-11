@@ -4,7 +4,7 @@ import ProductContent from "./ProductContent";
 import Rating from "./Rating";
 
 const Product = (props) => {
-  const id = props.id;
+  const id = props.sid;
   const updateRating = props.updateRating;
 
   return (
@@ -12,7 +12,11 @@ const Product = (props) => {
       <DeleteButton {...props}></DeleteButton>
       {/* spread operator! see the difference below */}
 
-      <ProductContent image={props.image} name={props.name} size={props.size} />
+      <ProductContent
+        image={props.imageLink}
+        name={props.name}
+        size={props.size}
+      />
       <Rating
         id={id}
         defaultRating={props.rating}
