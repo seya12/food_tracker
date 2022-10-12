@@ -30,7 +30,6 @@ const ProductTable = () => {
   //return array with custom product components
   const mapProducts = () => {
     if (filter) {
-      console.log("filter");
       return getMappedProducts(filteredProducts);
     }
     return getMappedProducts(products);
@@ -50,10 +49,15 @@ const ProductTable = () => {
     setFilter(size);
   };
 
-  const onAddClick = (product) => {
-    /*
-    TODO: POST request to backend
-    */
+  const onAddClick = async (product) => {
+    const resp = await fetch("/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+    console.log(resp);
     setProducts([...products, product]);
   };
 
