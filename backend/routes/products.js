@@ -1,9 +1,17 @@
 import express from "express";
-import { addProduct, getProducts } from "../controllers/products.js";
+import {
+  addProduct,
+  deleteProduct,
+  getProducts,
+  updateProduct,
+} from "../controllers/products.js";
 
 const router = express.Router();
 
+//TODO: put & delete with custom url
 router.get("/", getProducts);
 router.post("/", addProduct);
+router.put("/", updateProduct);
+router.delete("/", deleteProduct);
 
 export default router;
