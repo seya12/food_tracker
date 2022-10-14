@@ -4,6 +4,7 @@ import Product from "./Product";
 import AddProduct from "./AddProduct";
 import Title from "./Title";
 
+//TODO: Create custom hooks
 const ProductTable = () => {
   const [products, setProducts] = useState([
     {
@@ -15,7 +16,7 @@ const ProductTable = () => {
     },
   ]);
   const [filter, setFilter] = useState();
-  const sizes = [200, 400, 800];
+  const sizes = [200, 400, 800]; //TODO: Fetch Sizes from REST API
 
   const filteredProducts = products.filter((p) => p.size === filter);
 

@@ -9,6 +9,7 @@ import {
 const router = express.Router();
 
 //TODO: put & delete with custom url
+//TODO: provide categories
 router.get("/", getProducts);
 router.post("/", addProduct);
 router.put("/", updateProduct);
