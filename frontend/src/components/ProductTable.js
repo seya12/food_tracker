@@ -15,17 +15,27 @@ const ProductTable = () => {
       rating: 0,
     },
   ]);
+  const [sizes, setSizes] = useState([]);
   const [filter, setFilter] = useState();
-  const sizes = [200, 400, 800]; //TODO: Fetch Sizes from REST API
 
   const filteredProducts = products.filter((p) => p.size === filter);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchProductData() {
       const p = await fetch("/products");
       setProducts(await p.json());
     }
-    fetchData();
+    fetchProductData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchSizes() {
+      const p = await fetch("/categories");
+      const res = await p.json();
+
+      setSizes(res.map((c) => c.size));
+    }
+    fetchSizes();
   }, []);
 
   //return array with custom product components
