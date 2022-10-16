@@ -72,11 +72,16 @@ const ProductTable = () => {
     setProducts([...products, product]);
   };
 
-  const onDeleteClick = (id) => {
-    /*
-    TODO: DELETE request to backend
-    */
-    setProducts(products.filter((product) => product.sid !== id));
+  //TODO: Refetch products after delete
+  const onDeleteClick = async (sid) => {
+    const resp = await fetch("/products", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ sid }),
+    });
+    setProducts(products.filter((product) => product.sid !== sid));
   };
 
   const updateRating = (id, rating) => {
