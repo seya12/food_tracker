@@ -1,0 +1,19 @@
+#not working yet
+version: '3.8'
+services:
+  db:
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_DATABASE=quotes
+      - MYSQL_ROOT_PASSWORD=mauFJcuf5dhRMQrjj
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/home/lseyr/food_tracker/backend/docker
+      - ./db/import.sql:/docker-entrypoint-initdb.d/import.sql
+volumes:
+  db:
+    driver: local
