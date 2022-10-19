@@ -3,12 +3,13 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "db": "docker run -p 3306:3306 tracker"
   },
   "dependencies": {
     "dotenv-safe": "^8.2.0",
     "express": "^4.18.2",
-    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "nodemon": "^2.0.20"
   }
 }

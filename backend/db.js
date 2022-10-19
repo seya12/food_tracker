@@ -1,4 +1,4 @@
-import mysql from "mysql";
+import mysql from "mysql2";
 import * as dotenv from "dotenv-safe";
 dotenv.config();
 
@@ -7,4 +7,5 @@ export const db = mysql.createConnection({
   user: "root",
   password: process.env.DB_PASSWORD,
   database: "tracker",
+  charset: "utf8mb4",
 });
