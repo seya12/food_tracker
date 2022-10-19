@@ -72,6 +72,21 @@ const ProductTable = () => {
     setProducts([...products, product]);
   };
 
+  const updateRating = async (sid, rating) => {
+    const resp = await fetch("/products/rating", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ sid, rating }),
+    });
+
+    const newArr = products.map((p) =>
+      p.sid === sid ? { ...p, rating: rating } : p
+    );
+    setProducts(newArr);
+  };
+
   //TODO: Refetch products after delete
   const onDeleteClick = async (sid) => {
     const resp = await fetch("/products", {
@@ -82,16 +97,6 @@ const ProductTable = () => {
       body: JSON.stringify({ sid }),
     });
     setProducts(products.filter((product) => product.sid !== sid));
-  };
-
-  const updateRating = (id, rating) => {
-    /*
-    TODO: PUT request to backend
-    */
-    const newArr = products.map((p) =>
-      p.sid === id ? { ...p, rating: rating } : p
-    );
-    setProducts(newArr);
   };
 
   return (
