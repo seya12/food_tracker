@@ -1,11 +1,10 @@
-import { React, useEffect, useState } from "react";
+import { React, useCallback, useEffect, useState } from "react";
 import Filter from "./Filter";
 import Product from "./Product";
 import AddProduct from "./AddProduct";
 import Title from "./Title";
 
-//TODO: Create custom hooks
-const ProductTable = () => {
+const useProducts = () => {
   const [products, setProducts] = useState([
     {
       sid: 0,
@@ -15,18 +14,26 @@ const ProductTable = () => {
       rating: 0,
     },
   ]);
+
+  const fetchData = useCallback(async () => {
+    const p = await fetch("/products");
+    setProducts(await p.json());
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  return { products, fetchData };
+};
+
+//TODO: Create custom hooks
+const ProductTable = () => {
+  const { products, fetchData } = useProducts();
   const [sizes, setSizes] = useState([]);
   const [filter, setFilter] = useState();
 
   const filteredProducts = products.filter((p) => p.size === filter);
-
-  useEffect(() => {
-    async function fetchProductData() {
-      const p = await fetch("/products");
-      setProducts(await p.json());
-    }
-    fetchProductData();
-  }, []);
 
   useEffect(() => {
     async function fetchSizes() {
@@ -69,7 +76,7 @@ const ProductTable = () => {
       body: JSON.stringify(product),
     });
     console.log(resp);
-    setProducts([...products, product]);
+    fetchData();
   };
 
   const updateRating = async (sid, rating) => {
@@ -84,7 +91,7 @@ const ProductTable = () => {
     const newArr = products.map((p) =>
       p.sid === sid ? { ...p, rating: rating } : p
     );
-    setProducts(newArr);
+    fetchData();
   };
 
   //TODO: Refetch products after delete
@@ -96,7 +103,7 @@ const ProductTable = () => {
       },
       body: JSON.stringify({ sid }),
     });
-    setProducts(products.filter((product) => product.sid !== sid));
+    fetchData();
   };
 
   return (
