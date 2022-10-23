@@ -1,49 +1,18 @@
-import { React, useCallback, useEffect, useState } from "react";
+import { React, useState } from "react";
 import Filter from "./Filter";
 import Product from "./Product";
 import AddProduct from "./AddProduct";
 import Title from "./Title";
-
-const useProducts = () => {
-  const [products, setProducts] = useState([
-    {
-      sid: 0,
-      name: "",
-      size: 0,
-      imageLink: "",
-      rating: 0,
-    },
-  ]);
-
-  const fetchData = useCallback(async () => {
-    const p = await fetch("/products");
-    setProducts(await p.json());
-  }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
-  return { products, fetchData };
-};
+import useProducts from "../hooks/useProducts";
+import useSizes from "../hooks/useSizes";
 
 //TODO: Create custom hooks
 const ProductTable = () => {
-  const { products, fetchData } = useProducts();
-  const [sizes, setSizes] = useState([]);
+  const { products, fetchProducts, addProduct } = useProducts();
+  const { sizes } = useSizes();
   const [filter, setFilter] = useState();
 
   const filteredProducts = products.filter((p) => p.size === filter);
-
-  useEffect(() => {
-    async function fetchSizes() {
-      const p = await fetch("/categories");
-      const res = await p.json();
-
-      setSizes(res.map((c) => c.size));
-    }
-    fetchSizes();
-  }, []);
 
   //return array with custom product components
   const mapProducts = () => {
@@ -67,18 +36,6 @@ const ProductTable = () => {
     setFilter(size);
   };
 
-  const onAddClick = async (product) => {
-    const resp = await fetch("/products", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(product),
-    });
-    console.log(resp);
-    fetchData();
-  };
-
   const updateRating = async (sid, rating) => {
     const resp = await fetch("/products/rating", {
       method: "PUT",
@@ -88,10 +45,7 @@ const ProductTable = () => {
       body: JSON.stringify({ sid, rating }),
     });
 
-    const newArr = products.map((p) =>
-      p.sid === sid ? { ...p, rating: rating } : p
-    );
-    fetchData();
+    fetchProducts();
   };
 
   //TODO: Refetch products after delete
@@ -103,14 +57,14 @@ const ProductTable = () => {
       },
       body: JSON.stringify({ sid }),
     });
-    fetchData();
+    fetchProducts();
   };
 
   return (
     <>
       <div className="header">
         <Title />
-        <AddProduct sizes={sizes} onAddClick={onAddClick} />
+        <AddProduct sizes={sizes} onAddClick={addProduct} />
         <Filter
           currentFilter={filter}
           sizes={sizes}
